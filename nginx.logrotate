@@ -1,5 +1,5 @@
 /var/log/nginx/*.log {
-  daily
+  size 200M
   missingok
   rotate 7 
   compress
