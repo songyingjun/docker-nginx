@@ -11,7 +11,8 @@ RUN apt-get update && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD nginx.logrotate /etc/logrotate.d/nginx
+ADD crontabs /crontabs
 RUN mv /etc/cron.daily/logrotate /usr/local/bin/logrotate
-RUN mv crontabs /var/spool/cron/crontabs/root
+RUN mv /crontabs /var/spool/cron/crontabs/root
 # Start nginx and cron as a service
 CMD service cron start && nginx -g 'daemon off;'
